@@ -1,0 +1,12 @@
+<tr id="<%= project.id %>">
+  <td id="project-name"><%= project.name %></td>
+  <td>xxx seconds</td>
+  <td class="text-right">
+    <%= link_to edit_project_path(project), remote: true do  %>
+      <span class="glyphicon glyphicon-edit"></span> Editar
+    <% end %>
+    <%= link_to project_path(project), method: :delete do %>
+      <span class="glyphicon glyphicon-remove"></span> Eliminar
+    <% end %>
+  </td>
+</tr>
