@@ -1,72 +1,72 @@
 <div class="projects main">
-    <div class="container">
-      <div class="row text-right">
-        <a class="btn btn-primary" data-toggle="modal" href="#project-content-modal">New Project</a>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <table class="table projects-list">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Time</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Make it Real</td>
-                <td>3500 seconds</td>
-                <td class="text-right">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                  <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Elibom</td>
-                <td>865 seconds</td>
-                <td class="text-right">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                  <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
-                </td>
-              </tr>
-              <tr>
-                <td>Infinanza</td>
-                <td>349 seconds</td>
-                <td class="text-right">
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                  <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="container">
+    <div class="row text-right">
+      <a class="btn btn-primary" data-toggle="modal" href="#project-content-modal">New Project</a>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table projects-list">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Time</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Make it Real</td>
+              <td>3500 seconds</td>
+              <td class="text-right">
+                <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Elibom</td>
+              <td>865 seconds</td>
+              <td class="text-right">
+                <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Infinanza</td>
+              <td>349 seconds</td>
+              <td class="text-right">
+                <a href="#"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                <a href="#"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="project-content-modal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-          </button>
-          <h4 class="modal-title">New Project</h4>
+<div id="project-content-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">New Project</h4>
+      </div>
+
+      <form>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="project_name">Name</label>
+            <input class="form-control" id="project_name" name="project[name]" type="text">
+          </div>
         </div>
-
-        <form>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="project_name">Name</label>
-              <input class="form-control" id="project_name" name="project[name]" type="text">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input class="btn btn-primary" name="commit" type="submit" value="Create Project">
-          </div>
-        </form>    
-      </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input class="btn btn-primary" name="commit" type="submit" value="Create Project">
+        </div>
+      </form>    
+    </div><!-- .modal-content -->
+  </div><!-- .modal-dialog -->
+</div>

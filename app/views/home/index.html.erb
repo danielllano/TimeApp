@@ -5,8 +5,8 @@
         <h1><span class="glyphicon glyphicon-time"></span> The Time Tracking App</h1>
         <p class="subtitle">Time tracking has never been this easy ... until now!</p>
         <div class="call-to-action">
-          <a class="btn btn-default btn-lg" href="singup.html">Sign up now</a>
-          <a class="btn btn-lg" href="signup.html">... or Log in</a>
+          <%= link_to "Sign up now", new_user_registration_path, class:"btn btn-default btn-lg" %>
+          <%= link_to "... or Log in", new_user_session_path, class:"btn btn-lg" %>
         </div>
       </div>
     </div>
