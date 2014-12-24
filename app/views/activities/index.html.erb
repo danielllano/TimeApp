@@ -2,21 +2,35 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 activity-form">
-        <form class="row">
+ 
+        <%= form_for @activity, :html => {class:"row"} do |f| %>
+          <% if @activity.errors.any? %>
+            <div class="alert alert-danger" role="alert" id="error_explanation">
+              <h4><%= pluralize(@activity.errors.count, "error") %> prohibited
+                this activity from being saved:</h4>
+              <ul>
+              <% @activity.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
           <div class="form-group col-sm-3">
-            <select class="form-control">
-              <option>Make it Real</option>
-              <option>Elibom</option>
-              <option>Infinanza</option>
-            </select>
+            <%= f.collection_select(:project_id , @projects, :id, :name, {:prompt => false}, options = {class:"form-control"}) %>
           </div>
           <div class="form-group col-sm-8">
-            <input class="form-control" placeholder="¿En qué estás trabajando?" type="text" />
+            <%= f.text_field :description, class:"form-control", placeholder:"¿En qué estás trabajando?" %>
           </div>
           <div class="col-sm-1">
-            <input class="btn btn-success" type="submit" value="Start" />
+            <% if @activity_in_progress %>
+              <%= f.submit 'Stop', class: 'btn btn-danger' %>
+            <% else %>
+              <%= f.submit 'Start', class: 'btn btn-success' %>
+            <% end %>
           </div>
-        </form>
+        <% end %> 
+
       </div>
     </div>
 
@@ -30,31 +44,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Make it Real</td>
-            <td>Implementando TimeApp</td>
-            <td class="text-center">1200 segundos</td>
-          </tr>
-          <tr>
-            <td>Make it Real</td>
-            <td>Diseñando TimeApp</td>
-            <td class="text-center">3600 segundos</td>
-          </tr>
-          <tr>
-            <td>Elibom</td>
-            <td>Reunión</td>
-            <td class="text-center">300 segundos</td>
-          </tr>
-          <tr>
-            <td>Make it Real</td>
-            <td>Administrativo</td>
-            <td class="text-center">1500 segundos</td>
-          </tr>
-          <tr>
-            <td>Make it Real</td>
-            <td>Reunión</td>
-            <td class="text-center">800 segundos</td>
-          </tr>
+          <% @activities.each do |activity| %>
+            <tr>
+              <td><%= activity.project.name %></td>
+              <td><%= activity.description %></td>
+              <% if activity.ended_at.nil? %>
+                <td class="text-center">En progreso...</td>
+              <% else %>
+                <td class="text-center"><%= (activity.ended_at-activity.started_at).to_i %> segundos</td>
+              <% end %>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
