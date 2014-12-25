@@ -32,11 +32,11 @@ class ActivitiesController < ApplicationController
   private
 
     def set_activities
-      @activities = Activity.all
+      @activities = Activity.joins(:project).where(projects: {user_id: current_user.id})
     end
 
     def set_projects
-      @projects = Project.all
+      @projects = current_user.projects
     end
 
     def activity_params

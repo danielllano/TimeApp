@@ -15,8 +15,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to "Dashboard", activities_path %></li>
-            <li><%= link_to "Projects", projects_path %></li>
+            <li class="<%=is_active('dashboard')%>"><%= link_to "Dashboard", activities_path %></li>
+            <li class="<%=is_active('projects')%>"><%= link_to "Projects", projects_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
