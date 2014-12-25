@@ -1,15 +1,19 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_activities, only: [:index, :create]
+  before_action :set_projects, only: [:index, :create]
   
-  def index
-    @activity = Activity.new
-    @activities = Activity.all
-    @projects = Project.all
+  def index    
+    if Activity.last.ended_at.nil?
+      @activity_in_progress = true
+      @activity = Activity.last
+    else
+      @activity_in_progress = false
+      @activity = Activity.new
+    end
   end
 
   def create
-    @projects = Project.all
-    @activities = Activity.all
     @activity = Activity.new(activity_params)
     @activity.started_at = Time.now
     @activity.save
@@ -26,6 +30,14 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+    def set_activities
+      @activities = Activity.all
+    end
+
+    def set_projects
+      @projects = Project.all
+    end
 
     def activity_params
       params.require(:activity).permit(:description, :project_id)

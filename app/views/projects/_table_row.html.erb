@@ -1,6 +1,15 @@
 <tr id="<%= project.id %>">
   <td id="project-name"><%= project.name %></td>
-  <td>xxx seconds</td>
+  
+  <% project_time = 0 %>
+  
+  <% project.activities.each do |activity| %>
+    <% unless activity.ended_at.nil? %>
+      <% project_time += (activity.ended_at-activity.started_at) %>
+    <% end %>
+  <% end %>
+
+  <td><%= project_time.to_i %> seconds</td>
   <td class="text-right">
     <%= link_to edit_project_path(project), remote: true do  %>
       <span class="glyphicon glyphicon-edit"></span> Editar
