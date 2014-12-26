@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def is_active(action)       
-    params[:action] == action ? "active" : nil        
+  def cp(path)
+    "active" if current_page?(path)
   end
-  
+
 end

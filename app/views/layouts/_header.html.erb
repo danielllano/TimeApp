@@ -15,16 +15,16 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li class="<%=is_active('dashboard')%>"><%= link_to "Dashboard", activities_path %></li>
-            <li class="<%=is_active('projects')%>"><%= link_to "Projects", projects_path %></li>
+            <li class= <%= cp(activities_path) %> ><%= link_to "Dashboard", activities_path %></li>
+            <li class= <%= cp(projects_path) %> ><%= link_to "Projects", projects_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign Up", new_user_registration_path %></li>
-            <li><%= link_to "Log In", new_user_session_path %></li>
+            <li class= <%= cp(new_user_registration_path) %> ><%= link_to "Sign Up", new_user_registration_path %></li>
+            <li class= <%= cp(new_user_session_path) %> ><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
         </ul>
       </div>
