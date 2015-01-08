@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
-    @modal_title = "New Project"
   end
   
   def create
@@ -21,7 +20,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @modal_title = "Edit Project"
   end
 
   def update
