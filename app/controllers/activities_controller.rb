@@ -4,13 +4,14 @@ class ActivitiesController < ApplicationController
   before_action :set_projects, only: [:index, :create]
   
   def index    
-    if Activity.last.ended_at.nil?
+    if Activity.any? && Activity.last.ended_at.nil?
       @activity_in_progress = true
       @activity = Activity.last
     else
       @activity_in_progress = false
       @activity = Activity.new
     end
+
   end
 
   def create
