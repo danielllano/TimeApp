@@ -4,20 +4,23 @@ class ActivitiesController < ApplicationController
   before_action :set_projects, only: [:index, :create]
   
   def index    
-    if Activity.last.ended_at.nil?
+    if Activity.any? && Activity.last.ended_at.nil?
       @activity_in_progress = true
       @activity = Activity.last
     else
       @activity_in_progress = false
       @activity = Activity.new
     end
+
   end
 
   def create
     @activity = Activity.new(activity_params)
     @activity.started_at = Time.now
     @activity.save
-    @activity_in_progress = true
+    unless @activity.errors.any?
+      @activity_in_progress = true
+    end
     render 'index'
   end
 
@@ -32,7 +35,7 @@ class ActivitiesController < ApplicationController
   private
 
     def set_activities
-      @activities = Activity.joins(:project).where(projects: {user_id: current_user.id})
+      @activities = current_user.activities
     end
 
     def set_projects
